@@ -1,0 +1,1046 @@
+/* Nabah marketing site — tokens reused verbatim from the app's
+   design_guidelines.json (see ../DESIGN.md). One theme, one accent,
+   one radius scale, everywhere. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Scheherazade+New:wght@600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg: #0d0d0d;
+  --surface: #111318;
+  --card: #1a1b22;
+  --hover: #22232c;
+  --border-subtle: #2a2820;
+  --border-accent: rgba(201, 163, 85, 0.25);
+  --gold: #c9a355;
+  --gold-muted: #8a7440;
+  --text-primary: #ede8dc;
+  --text-secondary: #a09880;
+  --text-dim: #5a5448;
+  --danger: #8b3a3a;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-arabic: "Scheherazade New", serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+
+  --radius: 20px;
+  --radius-sm: 12px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur: 400ms;
+
+  --nav-h: 72px;
+  --container: 1152px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--bg);
+  color-scheme: dark;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  max-width: 65ch;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-dim);
+}
+
+/* ---------- Nav ---------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: rgba(13, 13, 13, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--font-arabic);
+  font-size: 1.6rem;
+  color: var(--gold);
+}
+
+.brand small {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.nav-links a {
+  transition: color var(--dur) var(--ease);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-status {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-muted);
+  border: 1px solid var(--border-accent);
+  border-radius: 999px;
+  padding: 6px 14px;
+  white-space: nowrap;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+  padding: 14px 26px;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: #0d0d0d;
+}
+
+.btn-primary:hover {
+  background: #d8b169;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-accent);
+}
+
+.btn-ghost:hover {
+  border-color: var(--gold);
+}
+
+/* ---------- Store badges ("coming soon", no live link yet) ---------- */
+
+.store-badges {
+  display: flex;
+  gap: 0.85rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.store-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 20px 10px 16px;
+  cursor: default;
+}
+
+.store-badge .icon {
+  width: 22px;
+  height: 22px;
+  color: var(--gold-muted);
+  flex-shrink: 0;
+}
+
+.store-badge .text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+
+.store-badge small {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+.store-badge strong {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  min-height: calc(100dvh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 24px 5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 70%;
+  background: radial-gradient(
+    ellipse 60% 55% at 50% 25%,
+    rgba(201, 163, 85, 0.16),
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-word {
+  font-family: var(--font-arabic);
+  font-size: clamp(4rem, 12vw, 7.5rem);
+  color: var(--gold);
+  line-height: 1.5;
+}
+
+.hero-rule {
+  width: 120px;
+  height: 1px;
+  margin: 0.5rem 0 2.25rem;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.hero h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  max-width: 22ch;
+  margin-bottom: 1.25rem;
+}
+
+.hero p {
+  color: var(--text-secondary);
+  font-size: 1.0625rem;
+  max-width: 46ch;
+  margin: 0 auto 2.25rem;
+}
+
+/* ---------- Sections ---------- */
+
+section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.section-head p {
+  margin: 0.75rem auto 0;
+}
+
+/* ---------- Bento ---------- */
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 1.25rem;
+}
+
+.bento-item {
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.9rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 176px;
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.bento-item:hover {
+  border-color: var(--border-accent);
+  background: var(--hover);
+}
+
+.bento-item .icon {
+  width: 26px;
+  height: 26px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.bento-item .icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bento-item h3 {
+  margin-bottom: 0.1rem;
+}
+
+.bento-item p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+/* Row 1 — two even, wide tiles */
+.b-quran {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+
+.b-quran::before {
+  content: "اقرأ";
+  position: absolute;
+  bottom: -0.3em;
+  right: 0.6em;
+  font-family: var(--font-arabic);
+  font-size: 4.5rem;
+  color: rgba(201, 163, 85, 0.08);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.b-prayer {
+  grid-column: 3 / 5;
+  grid-row: 1 / 2;
+  background-image: radial-gradient(circle at 88% 15%, rgba(201, 163, 85, 0.12), transparent 55%);
+}
+
+/* Row 2 — four even, square tiles */
+.b-feelings {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.b-duas {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.b-qibla {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+.b-tasbeeh {
+  grid-column: 4 / 5;
+  grid-row: 2 / 3;
+}
+
+/* Row 3 — two even tiles + one wide "coming soon" tile */
+.b-adhkar {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+.b-sunnah {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.b-hajj {
+  grid-column: 3 / 5;
+  grid-row: 3 / 4;
+  border-style: dashed;
+  background-image: radial-gradient(circle at 90% 90%, rgba(201, 163, 85, 0.08), transparent 60%);
+}
+
+.coming-soon {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-muted);
+  border: 1px solid var(--border-accent);
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+/* ---------- Mockup section ---------- */
+
+.mockup-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.mockup-copy {
+  text-align: left;
+}
+
+.mockup-copy h2 {
+  margin-bottom: 1rem;
+  max-width: 14ch;
+}
+
+.mockup-copy p {
+  margin-bottom: 1.75rem;
+}
+
+.mockup-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.mockup-list li {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+.mockup-list li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  margin-top: 0.55rem;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.phone {
+  justify-self: center;
+  width: 300px;
+  border-radius: 44px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface);
+  padding: 14px;
+  box-shadow: 0 40px 100px -40px rgba(0, 0, 0, 0.8);
+}
+
+.phone-screen {
+  background: var(--bg);
+  border-radius: 32px;
+  padding: 22px 18px 26px;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.phone-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-avatar svg {
+  width: 15px;
+  height: 15px;
+  color: var(--gold-muted);
+}
+
+.phone-date {
+  text-align: right;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+}
+
+.phone-date strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.phone-greeting {
+  font-family: var(--font-arabic);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1.1rem;
+}
+
+.phone-hadith {
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.1rem;
+}
+
+.phone-next {
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  margin-bottom: 1.1rem;
+}
+
+.phone-next .label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.phone-next .name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.phone-next .countdown {
+  font-family: var(--font-body);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
+
+.phone-progress {
+  height: 3px;
+  border-radius: 999px;
+  background: var(--gold-muted);
+  opacity: 0.35;
+  overflow: hidden;
+}
+
+.phone-progress span {
+  display: block;
+  height: 100%;
+  width: 62%;
+  background: var(--gold);
+}
+
+.phone-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: auto;
+}
+
+.phone-tile {
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 10.5px;
+  color: var(--text-secondary);
+}
+
+.phone-tile .icon {
+  width: 18px;
+  height: 18px;
+  margin: 0 auto 6px;
+  color: var(--gold);
+}
+
+/* ---------- Trust row ---------- */
+
+.trust {
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.trust .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.trust-item h3 {
+  font-size: 1.1875rem;
+  margin-bottom: 0.5rem;
+}
+
+.trust-item p {
+  font-size: 0.9375rem;
+}
+
+/* ---------- Coming soon preview ---------- */
+
+.coming-soon-preview .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.coming-soon-copy {
+  text-align: left;
+}
+
+.coming-soon-copy h2 {
+  margin-bottom: 1rem;
+  max-width: 16ch;
+}
+
+.coming-soon-copy p {
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+.coming-soon-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.feature-item h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.feature-item p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---------- Action / footer CTA ---------- */
+
+.action {
+  text-align: center;
+}
+
+.action h2 {
+  margin-bottom: 0.75rem;
+}
+
+.action p {
+  margin: 0 auto 2rem;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 3rem 0 2.5rem;
+}
+
+.footer-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--font-arabic);
+  font-size: 1.3rem;
+  color: var(--gold);
+}
+
+.footer-brand small {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-col h4 {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.85rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 14px;
+}
+
+.footer-col a:hover {
+  color: var(--text-primary);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 13px;
+  color: var(--text-dim);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ---------- Reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Legal pages ---------- */
+
+.legal {
+  padding: 3.5rem 0 6rem;
+}
+
+.legal .container {
+  max-width: 760px;
+}
+
+.legal-header {
+  margin-bottom: 3rem;
+}
+
+.legal-header h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin: 0.5rem 0 0.75rem;
+}
+
+.legal-updated {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.legal h2 {
+  font-size: 1.375rem;
+  margin: 2.5rem 0 0.9rem;
+}
+
+.legal h2:first-of-type {
+  margin-top: 0;
+}
+
+.legal p {
+  max-width: none;
+  margin-bottom: 1rem;
+  font-size: 0.9375rem;
+}
+
+.legal ul {
+  margin: 0 0 1rem 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.legal li {
+  margin-bottom: 0.5rem;
+}
+
+.legal strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.legal a {
+  color: var(--gold);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.legal a:hover {
+  border-color: var(--gold);
+}
+
+.legal-note {
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.5rem;
+  font-size: 0.875rem;
+  margin: 2rem 0;
+}
+
+/* ---------- Support / FAQ ---------- */
+
+.faq-item {
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1.5rem 0;
+}
+
+.faq-item h3 {
+  font-size: 1.0625rem;
+  margin-bottom: 0.6rem;
+}
+
+.faq-item p {
+  max-width: none;
+  font-size: 0.9375rem;
+}
+
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.contact-card .eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.contact-card .email {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--gold);
+  display: inline-block;
+  margin: 0.5rem 0 1.25rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .mockup-section .container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .mockup-copy {
+    text-align: center;
+    order: 2;
+  }
+
+  .mockup-list {
+    align-items: center;
+  }
+
+  .mockup-list li {
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    inset: var(--nav-h) 0 auto 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.5rem 24px 1.5rem;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+
+  .nav-links.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links a,
+  .nav-links .nav-status {
+    padding: 0.85rem 0;
+    width: 100%;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-item,
+  .b-quran,
+  .b-prayer,
+  .b-feelings,
+  .b-duas,
+  .b-qibla,
+  .b-tasbeeh,
+  .b-adhkar,
+  .b-sunnah,
+  .b-hajj {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .b-quran::before {
+    font-size: 4rem;
+  }
+
+  .mockup-section .container,
+  .coming-soon-preview .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .trust .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
